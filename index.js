@@ -7,10 +7,12 @@ import userRoutes from './routes/userRoutes.js'
 import dotenv from 'dotenv'
 
 // setup
+const PORT = process.env.PORT || 5000
+
 const app = express()
 dotenv.config()
 mongoose.connect(process.env.CONNECTION_URL)
-    .then(() => app.listen(process.env.PORT, () => console.log(`Server running on port: ${process.env.PORT}`)))
+    .then(() => app.listen(PORT, () => console.log(`Server running on port: ${PORT}`)))
     .catch(err => console.log('connection error'))
 
 app.use(express.json({ limit: '30mb', extended: true }))
